@@ -13,13 +13,26 @@ class StackIsEmptyError(RuntimeError):
 class Stack:
     def __init__(self, size):
         self.storage = [0] * size
+        self.size = size
         self.head = -1
 
-    def push(self, v):
-        pass
+
+    def push(self, n):
+        if(self.head + 1 < self.size):
+            self.head += 1
+            self.storage[self.head] = n            
+        else: 
+            raise StackOverflowError()            
+
 
     def pop(self):
-        pass
+        if(self.head > -1):
+            popping = self.storage[self.head]
+            self.storage[self.head] = 0
+            self.head -= 1
+            return(popping)
+        else: raise StackIsEmptyError()        
+
 
     def __len__(self):
-        pass
+        return(self.head+1)

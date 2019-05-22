@@ -11,6 +11,7 @@ class TestStack(unittest.TestCase):
         for v in a:
             s.push(v)
         b = [s.pop() for i in range(len(a))]
+#        print(b)
         self.assertEqual(a[::-1], b)
 
     def test_overflow_error(self):
